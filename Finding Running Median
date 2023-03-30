@@ -53,8 +53,9 @@ int main()
     do
     {
         insertionSort(arr2, i+1);
+        cout << " median of ";
         printArray(arr2,i+1);
-        cout << " median is " << fixed << setprecision(1) << running_median(arr2, i+1) << "\n";
+        cout << " is " << fixed << setprecision(1) << running_median(arr2, i+1) << "\n";
         int copyArr[i+1];
         copy_n(arr2,i+1,copyArr);
         i++;
