@@ -1,0 +1,67 @@
+#include <iostream>
+#include <iomanip>
+#include<algorithm>
+
+using namespace std;
+
+void insertionSort(int array[], int size)
+{
+    int key = array[size-1];
+    int j = size - 2;
+
+    while (key < array[j] && j >= 0)
+    {
+        array[j + 1] = array[j];
+        j--;
+    }
+    array[j + 1] = key;
+}
+
+void printArray(int array[], int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        cout << array[i] << " ";
+    }
+}
+
+double running_median(int array[], int size)
+{
+    double median = 0;
+    if(size %2 == 0)
+    {
+        int x = size/2;
+        int y = x -1;
+        median = (array[x]+array[y])/2;
+    }
+    else
+    {
+        median = array[(int)(size/2)];
+    }
+    return median;
+}
+
+
+int main()
+{
+    int arr[] = {7,3,5,2};
+    int arr_size = sizeof(arr) / sizeof(arr[0]);
+
+    int arr2[1];
+    arr2[0] = arr[0];
+    int i = 0;
+    do
+    {
+        insertionSort(arr2, i+1);
+        printArray(arr2,i+1);
+        cout << " median is " << fixed << setprecision(1) << running_median(arr2, i+1) << "\n";
+        int copyArr[i+1];
+        copy_n(arr2,i+1,copyArr);
+        i++;
+        arr2[i+1];
+        for(int j = 0; j < i-1; j++)
+            arr2[j]= copyArr[j];
+        arr2[i] = arr[i];
+    }
+    while(i < arr_size);
+}
