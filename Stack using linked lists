@@ -1,0 +1,85 @@
+#include <iostream>
+
+using namespace std;
+
+struct Node {
+    int data;
+    struct Node *next;
+};
+
+struct Node* top = NULL;
+
+
+void push(int value){
+   struct Node* new_node = (struct Node*) malloc(sizeof(struct Node));
+   new_node -> data = value;
+   new_node -> next = top;
+   top = new_node;
+}
+
+void pop(){
+    if (top == NULL){
+        cout << " Stack Underflow " << endl;
+    }else{
+        cout << top -> data << " is popped out of the stack." << endl;
+        top = top -> next;
+    }
+}
+
+void isEmpty(){
+    if (top == NULL)  // if it is empty
+        cout << " Stack is empty." << endl;
+    else
+        cout << " Stack is not empty." << endl;
+}
+
+void stackTop(){
+    if (top == NULL) //if it is empty
+        cout << " Stack is empty." << endl;
+    else
+        cout << top -> data << " is the top value of the stack." << endl;
+
+}
+
+void display(){
+    struct Node* ptr;
+    if (top == NULL)     // if stack is empty.
+        cout << " Stack is empty." << endl;
+    else{   // otherwise print all the elements.
+        ptr = top;
+        while (ptr != NULL){
+           cout << ptr -> data << " " ;
+           ptr = ptr -> next;
+        }
+        cout << "\n";
+    }
+}
+
+
+int main()
+{
+    push(8);
+    push(10);
+    push(5);
+    push(11);
+    push(15);
+    push(23);
+    push(6);
+    push(18);
+    push(20);
+    push(17);
+
+    display();
+
+    for(int i = 0; i < 5; i++)
+        pop();
+
+    display();
+
+    push(4);
+    push(30);
+    push(3);
+    push(1);
+
+    display();
+}
