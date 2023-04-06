@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ctime>
 
 using namespace std;
 
@@ -8,7 +9,7 @@ int stack[n];
 
 void push(int value){
     if (top >= n - 1){   // if length of the array exceeds
-        cout << " Stack Overflow " <<endl;
+        cout << "Stack Overflow! " <<endl;
     }else{
         top++;
         stack[top] = value;
@@ -17,7 +18,7 @@ void push(int value){
 
 void pop(){
     if (top <= -1){
-        cout << " Stack Underflow " << endl;
+        cout << "Stack Underflow! " << endl;
     }else{
         cout << stack[top] << " is popped out of the stack." << endl;
         top--;
@@ -26,9 +27,9 @@ void pop(){
 
 void isEmpty(){
     if (top == -1)  // if stack is empty.
-        cout << " Stack is empty." << endl;
+        cout << "Stack is empty." << endl;
     else
-        cout << " Stack is not empty." << endl;
+        cout << "Stack is not empty." << endl;
 }
 
 void isFull(){
@@ -40,7 +41,7 @@ void isFull(){
 
 void stackTop(){
     if (top == -1)  // if stack is empty.
-        cout << " Stack is empty." << endl;
+        cout << "Stack is empty. So there is no top value." << endl;
     else
         cout << stack[0] << " is the top value of the stack." << endl;
 
@@ -48,7 +49,7 @@ void stackTop(){
 
 void display(){
     if (top == -1)     // if stack is empty.
-        cout << " Stack is empty." << endl;
+        cout << "Stack is empty. So we cannot have anything to display." << endl;
     else   // otherwise print all the elements.
         for(int i = top; i >= 0; i--)
             cout << stack[i] << " " ;
@@ -58,28 +59,26 @@ void display(){
 
 int main()
 {
-    push(8);
-    push(10);
-    push(5);
-    push(11);
-    push(15);
-    push(23);
-    push(6);
-    push(18);
-    push(20);
-    push(17);
-    
+    const int size = 100;   // Type a positive number to add how many elements into the stack.
+
+    clock_t start;
+    clock_t end;
+
+    start = clock();
+    for(int i = 0; i < size; i++)
+        push(rand()%100);
+
     display();
-    
-    for(int i = 0; i < 5; i++)
+    stackTop();
+    isEmpty();
+
+    for(int i = 0; i < size; i++)
         pop();
-    
+
     display();
-    
-    push(4);
-    push(30);
-    push(3);
-    push(1);
-    
-    display();
+    end = clock();
+
+    double t = ((end - start) / (double)CLOCKS_PER_SEC);
+    cout << "\nTime taken for pushing and popping " << size << " elements : " << fixed << t << "s\n" << endl;
+    return 0;
 }
