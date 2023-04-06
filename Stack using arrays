@@ -1,0 +1,85 @@
+#include <iostream>
+
+using namespace std;
+
+const int n = 100;      // This is the length of the array which represents the size of our stack
+int top = -1;           // This is used to the current position. DO NOT CHANGE THIS.
+int stack[n];
+
+void push(int value){
+    if (top >= n - 1){   // if length of the array exceeds
+        cout << " Stack Overflow " <<endl;
+    }else{
+        top++;
+        stack[top] = value;
+    }
+}
+
+void pop(){
+    if (top <= -1){
+        cout << " Stack Underflow " << endl;
+    }else{
+        cout << stack[top] << " is popped out of the stack." << endl;
+        top--;
+    }
+}
+
+void isEmpty(){
+    if (top == -1)  // if stack is empty.
+        cout << " Stack is empty." << endl;
+    else
+        cout << " Stack is not empty." << endl;
+}
+
+void isFull(){
+    if (top == n-1)  // if stack is full. 
+        cout << " Stack is full." << endl;
+    else
+        cout << " Stack is not full." << endl;
+}
+
+void stackTop(){
+    if (top == -1)  // if stack is empty.
+        cout << " Stack is empty." << endl;
+    else
+        cout << stack[0] << " is the top value of the stack." << endl;
+
+}
+
+void display(){
+    if (top == -1)     // if stack is empty.
+        cout << " Stack is empty." << endl;
+    else   // otherwise print all the elements.
+        for(int i = top; i >= 0; i--)
+            cout << stack[i] << " " ;
+        cout << "\n";
+}
+
+
+int main()
+{
+    push(8);
+    push(10);
+    push(5);
+    push(11);
+    push(15);
+    push(23);
+    push(6);
+    push(18);
+    push(20);
+    push(17);
+    
+    display();
+    
+    for(int i = 0; i < 5; i++)
+        pop();
+    
+    display();
+    
+    push(4);
+    push(30);
+    push(3);
+    push(1);
+    
+    display();
+}
