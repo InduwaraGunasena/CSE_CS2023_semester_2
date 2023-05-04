@@ -6,22 +6,22 @@ using namespace std;
 void heapify(int arr[], int n, int root)
 {
    // build heapify
-    
+
     int max_num = root;  // let's take largest number index as the root index.
-    int left = 2 * i + 1;
-    int right = 2 * i + 2;
-    
+    int left = 2 * root + 1;
+    int right = 2 * root + 2;
+
     if (left < n && arr[left] > arr[max_num])  // If left child value is larger than the root value, re-assign the max_num as that left child index.
         max_num = left;
     if (right < n && arr[right] > arr[max_num])  // If right child value is larger than the root value, re-assign the max_num as that right child index.
         max_num = right;
 
-    if (max_num != i)  // If largest is not root, then swap relevant index values.
+    if (max_num != root)  // If largest is not root, then swap relevant index values.
     {
     // swapping maximum element with its parent node.
         int x = arr[max_num];   // take the element value for temporarily.
-        arr[max_num] = arr[i];   //store it into the parent node.
-        arr[i] = x;
+        arr[max_num] = arr[root];   //store it into the parent node.
+        arr[root] = x;
 
         heapify(arr, n, max_num);  // Recursively heapify the other subtree.
     }
