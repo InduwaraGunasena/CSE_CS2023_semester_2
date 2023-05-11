@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1584205420 source:d:\programmes\c++ projects\lab 9\main.cpp
+	<iostream>
+
+1683797886 source:d:\programmes\c++ projects\lab 9\hashtable_basics.cpp
+	<cstring>
+	<string>
+	<iostream>
+
+1683800358 source:d:\programmes\c++ projects\lab 9\hashtable_with_chaining.cpp
+	<iostream>
+	"linkedlist.cpp"
+
+1683622966 d:\programmes\c++ projects\lab 9\linkedlist.cpp
+	<iostream>
+
